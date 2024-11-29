@@ -16,6 +16,12 @@ dist/
 # IDE settings
 .vscode/
 
+AppData/
+Documents/
+.p2/
+.ssh/
+*.log
+*.bak
 
 
 # dotenv files
