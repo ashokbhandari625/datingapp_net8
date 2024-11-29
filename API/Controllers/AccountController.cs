@@ -14,7 +14,7 @@ namespace API.Controllers
 {
     public class AccountController(DataContext context) : BaseApiController
     {
-        [HttpPost("register")]  // account/register
+        [HttpPost("register")]  // account/register this is the thing 
         public async Task<ActionResult<AppUser>> Register(RegisterDTO registerDTO)
         {
 
