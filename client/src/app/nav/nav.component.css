@@ -1,3 +1,8 @@
 .dropdown-toggle, .dropdown-item{
     cursor:   pointer;
 }
+
+.dark-text {
+    color: #000000; /* Dark color */
+    font-weight: bold; /* Optional for better visibility */
+}
