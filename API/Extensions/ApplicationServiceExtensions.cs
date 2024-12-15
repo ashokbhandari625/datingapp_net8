@@ -6,6 +6,7 @@ using API.Data;
 using API.Inerfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
 {
@@ -23,6 +24,8 @@ namespace API.Extensions
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<ITokenService, TokenService>(); // created ones per client http request 
+            services.AddScoped<IUserRepository, UserRepository>() ; 
+           services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services; 
         }
 
