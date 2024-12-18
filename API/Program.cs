@@ -26,12 +26,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         };
     }
 );
-var app = builder.Build();
 
+var app = builder.Build();
+app.UseCors("AllowAll");
+//app.UseCors("AllowSpecificOrigins"); // Apply the CORS policy here
 app.UseMiddleware<ExceptionMiddleware>() ; 
 // Configure the HTTP request pipeline.
 
-app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()) ; 
+//app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()) ; 
 app.UseAuthentication() ;
 app.UseAuthorization() ;    
 

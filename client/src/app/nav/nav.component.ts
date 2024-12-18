@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule, NgIf, BsDropdownModule, RouterLink, RouterLinkActive, TitleCasePipe],
+  imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive, TitleCasePipe],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -20,10 +20,7 @@ private toaster= inject(ToastrService);
   model: any = {};
   login() {
     this.accountservice.login(this.model).subscribe({
-      next: _ => this.router.navigateByUrl('/members')
-
-
-      ,
+      next: _ => this.router.navigateByUrl('/members'),
       error: error => this.toaster.error(error.error)
     })
   }
