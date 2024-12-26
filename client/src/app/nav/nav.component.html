@@ -31,9 +31,9 @@
         </li>
         <li class="nav-item">
         </li>
-        
+
         }
-    </ul>
+      </ul>
       <!-- <li class="nav-item">
         <a routerLink="/error" class="nav-link" routerLinkActive="active">Error</a>
       </li>  -->
@@ -41,9 +41,9 @@
 
       <div dropdown class="dropdown">
         <a dropdownToggle class="dropdown-toggle text-decoration-none dark-text">
-           Welcome {{accountservice.currentUser()?.username | titlecase}} </a>
+          Welcome {{accountservice.currentUser()?.username | titlecase}} </a>
         <div *dropdownMenu class="dropdown-menu">
-          <a class="dropdown-item">Eidt Profile</a>
+          <a routerLink="/member/edit" class="dropdown-item" >Edit Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>

@@ -1,0 +1,76 @@
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+.card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Card Body */
+.card-body {
+    padding: 1.5rem;
+    background-color: #ffffff;
+}
+
+.card-body strong {
+    color: #495057; /* Dark text for emphasis */
+    font-weight: bold;
+}
+
+.card-body p {
+    margin-bottom: 0.5rem;
+    color: #6c757d; /* Subtle text */
+}
+
+/* Footer Styling */
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Button Group */
+.btn-group .btn {
+    width: 50%;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    border-radius: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-group .btn-primary:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-group .btn-success:hover {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-4 {
+        width: 100%; /* Full width for small screens */
+    }
+
+    .card-img {
+        height: 200px;
+    }
+}
