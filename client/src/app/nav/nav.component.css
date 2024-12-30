@@ -1,8 +1,9 @@
-.dropdown-toggle, .dropdown-item{
-    cursor:   pointer;
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
 }
 
-.dark-text {
-    color: #000000; /* Dark color */
-    font-weight: bold; /* Optional for better visibility */
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
 }

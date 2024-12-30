@@ -15,8 +15,8 @@ login(model : any ){
   return this.http.post<User>(this.baseurl + 'account/login' , model ).pipe(
     map(user=>{
       if( user) {
-        localStorage.setItem('user' ,  JSON.stringify(user));
-        this.currentUser.set(user) ;
+        this.setCurrentUser(user); 
+
       }
     })
   )
@@ -31,12 +31,16 @@ register(model : any ){
   return this.http.post<User>(this.baseurl + 'account/register' , model ).pipe(
     map(user=>{
       if( user) {
-        localStorage.setItem('user' ,  JSON.stringify(user));
-        this.currentUser.set(user) ;
+       this.setCurrentUser(user); 
       }
       return user; 
     })
   )
+}
+
+setCurrentUser(user:User){
+  localStorage.setItem('user' ,  JSON.stringify(user));
+        this.currentUser.set(user) ;
 }
   
 }

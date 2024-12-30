@@ -1,72 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Navbar</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QXHXwWcDZFV5Wz9AwXpIYlRTV8IW7AC+H8oXzq40onp5g5k4Q4MzDkWtoMTiXXh9" crossorigin="anonymous">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">DatingApp</a>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Dating App</a>
 
 
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        @if(accountservice.currentUser()){
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="" aria-current="page">Home </a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/members" class="nav-link" routerLinkActive="active">Matches</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/lists" class="nav-link" routerLinkActive="active">List</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/messages" class="nav-link" routerLinkActive="active">Messages</a>
-        </li>
-        <li class="nav-item">
-        </li>
-
-        }
+          @if (accountService.currentUser()) {
+              <li class="nav-item">
+                  <a routerLink="/members" routerLinkActive="active" class="nav-link">Matches</a>
+              </li>
+              <li class="nav-item">
+                  <a routerLink="/lists" routerLinkActive="active" class="nav-link">Lists</a>
+              </li>
+              <li class="nav-item">
+                  <a routerLink="/messages" routerLinkActive="active" class="nav-link">Messages</a>
+              </li>
+              <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+                  <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+              </li>
+          }
+          <li class="nav-item">
+              <a routerLink="/errors" routerLinkActive="active" class="nav-link">Errors</a>
+          </li>
       </ul>
-      <!-- <li class="nav-item">
-        <a routerLink="/error" class="nav-link" routerLinkActive="active">Error</a>
-      </li>  -->
-      @if(accountservice.currentUser()) {
 
+      @if (accountService.currentUser()) {
       <div dropdown class="dropdown">
-        <a dropdownToggle class="dropdown-toggle text-decoration-none dark-text">
-          Welcome {{accountservice.currentUser()?.username | titlecase}} </a>
-        <div *dropdownMenu class="dropdown-menu">
-          <a routerLink="/member/edit" class="dropdown-item" >Edit Profile</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
-        </div>
+          <img 
+              class="me-2"
+              src="{{accountService.currentUser()?.photoUrl || './assets/user.png'}}" 
+              alt="user main image">
+          <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">
+              Welcome {{accountService.currentUser()?.knownAs}}
+          </a>
+          <div *dropdownMenu class="dropdown-menu">
+              <a routerLink="/member/edit" class="dropdown-item">Edit profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
       </div>
       }
-      @if(!accountservice.currentUser()){
-      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
-        <input name="Username" [(ngModel)]="model.Username" class="form-control me-2" type="text"
-          placeholder="Username">
 
-        <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
-          placeholder="Password">
-        <button class="btn btn-success" type="submit">Login</button>
+      @if (!accountService.currentUser()) {
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+          <input name="username" [(ngModel)]="model.username" class="form-control me-2" placeholder="Username">
+          <input name="password" [(ngModel)]="model.password" class="form-control me-2" placeholder="Password"
+              type="password">
+          <button class="btn btn-success" type="submit">Login</button>
       </form>
       }
 
 
-    </div>
-
-  </nav>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-jXm9XGNS+0tNfbMjzUffbrK+wbh7KojMLBgZ1YY39OH1A9UkM7K5jNoPr59Fyww8"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+  </div>
+</nav>

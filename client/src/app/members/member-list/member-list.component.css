@@ -1,0 +1,12 @@
+.d-flex.flex-wrap.align-items-start {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Aligns all items to the left */
+    gap: 15px; /* Adds space between the items */
+  }
+  
+  .member-card-wrapper {
+    flex: 1 1 calc(20% - 15px); /* Adjusts for 5 cards per row */
+    max-width: 200px; /* Optional: Ensure a consistent card width */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }

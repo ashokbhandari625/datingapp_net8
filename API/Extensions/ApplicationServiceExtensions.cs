@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.Helpers;
 using API.Inerfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -47,7 +48,10 @@ services.AddCors(options =>
             });
             services.AddScoped<ITokenService, TokenService>(); // created ones per client http request 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPhotoService, PhotoService>() ; 
+            services.AddScoped<LogUserActivity>() ; 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings")); 
             return services;
         }
 
